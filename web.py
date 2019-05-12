@@ -14,6 +14,7 @@ def token_auth(f):
     def decorated_function(*args, **kwargs):
         if request.headers.get('X-API-TOKEN', None) != current_app.config['API_TOKEN']:
             abort(403)
+        print ("auth ok")
         return f(*args, **kwargs)
     return decorated_function
 
@@ -24,6 +25,7 @@ def predict():
     from engines import content_engine
     item = request.data.get('item')
     num_predictions = request.data.get('num', 10)
+    print ("(item,num_predictions):",item, num_predictions)
     if not item:
         return []
     return content_engine.predict(str(item), num_predictions)
