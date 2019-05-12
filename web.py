@@ -1,6 +1,9 @@
-from flask.ext.api import FlaskAPI
+#from flask.ext.api import FlaskAPI
 from flask import request, current_app, abort
 from functools import wraps
+#from flask import request, url_for, current_app, abort
+from flask_api import FlaskAPI
+
 
 app = FlaskAPI(__name__)
 app.config.from_object('settings')
